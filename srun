@@ -1,0 +1,10 @@
+#!/bin/bash
+
+countSymbols=`echo -n "$DISPLAY" | wc -c`
+
+if [ $countSymbols -le "5" ]; then
+    export DISPLAY=`hostname`$DISPLAY
+fi
+#echo $DISPLAY
+xhost +
+/usr/local/bin/srun --export=ALL $@
